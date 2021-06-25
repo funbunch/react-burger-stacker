@@ -9,7 +9,7 @@ export default class BurgerPane extends Component {
 
     return( 
       <div>
-      <BurgerStack addedIngredients={this.props.addedIngredients}
+      <BurgerStack addedIngredients={this.props.addedIngredients} />
       <ClearBurger clearBurger={this.props.clearBurger} />
      </div>
 

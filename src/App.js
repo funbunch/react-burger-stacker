@@ -28,23 +28,22 @@ export default class App extends Component {
 
   addToBurger = (e) => {
     //get value of clicked ingred  and color
-    const newIngreient = {name: e.target.innerText, color: e.target.style,bcakgroundColor} }
+    const newIngredient = {name: e.target.innerText, color: e.target.style.backgroundColor}
     // create a new array w/ curremt addedIngred status and append new Ingred
 
-    const updatedaddedIngredients =this.state.addedIngredients.concat(newIngreient)
+    const updatedAddedIngredients =this.state.addedIngredients.concat(newIngredient)
 
     //setState w/ new clickedIngred arra
     this.setState({
-      addedIngredients: updatedClickeIngreadietns
+      addedIngredients: updatedAddedIngredients
     })
+  } 
 
   clearBurger = (e) => {
     this.setState({
-      addedIngredients = []
+      addedIngredients:[]
     })
   }
-  } 
-
 
 
   render() {
@@ -52,8 +51,8 @@ export default class App extends Component {
     return(
 
       <div style={{display: "flex", alignItems:"flex-end"}}>
-        <IngredientList ingredients={ingredients} addToBurger={this.addToBurger} BurgerPane/>
-        <h2>Burger Pane addedIngredients={this.state.addedIngredients} clearBurger{this.clearBurger}</h2>
+        <IngredientList ingredients={ingredients} addToBurger={this.addToBurger} />
+        <BurgerPane addedIngredients={this.state.addedIngredients} clearBurger={this.clearBurger} />
       </div>
 
     )
