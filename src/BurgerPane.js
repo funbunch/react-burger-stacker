@@ -1,19 +1,13 @@
-import { extend } from "lodash"
-import { Component } from "react"
+import React from 'react'
 import BurgerStack from './BurgerStack'
 import ClearBurger from './ClearBurger'
 
-export default class BurgerPane extends Component {
+export default function BurgerPane(props) {
+  return( 
+    <div>
+      <BurgerStack addedIngredients={props.addedIngredients} />
+      <ClearBurger clearBurger={props.clearBurger} />
+    </div>
 
-  render() {
-
-    return( 
-      <div>
-      <BurgerStack addedIngredients={this.props.addedIngredients}
-      <ClearBurger clearBurger={this.props.clearBurger} />
-     </div>
-
-
-    )
-  }
+  )
 }

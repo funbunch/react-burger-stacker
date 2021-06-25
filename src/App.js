@@ -1,6 +1,8 @@
-import { Component } from 'react'
+import React from 'react'
+import { useState } from "react"
 import IngredientList from './IngredientList'
 import BurgerPane from './BurgerPane'
+
 
 
 const ingredients = [
@@ -18,44 +20,31 @@ const ingredients = [
   {name: 'Onion', color: 'lightyellow'}
 ]
 
-export default class App extends Component {
-  constructor(props) {
-    super()
-    this.state = { 
-      addedIngredients: [] 
-    }
-  } 
+export default function App() {
+  const [addedIngredients, setAddedIngredients] = useState([])
 
-  addToBurger = (e) => {
+  const addToBurger = (e) => {
     //get value of clicked ingred  and color
-    const newIngreient = {name: e.target.innerText, color: e.target.style,bcakgroundColor} }
+    const newIngredient = {name: e.target.innerText, color: e.target.style.backgroundColor} 
     // create a new array w/ curremt addedIngred status and append new Ingred
 
-    const updatedaddedIngredients =this.state.addedIngredients.concat(newIngreient)
+    const updatedAddedIngredients = addedIngredients.concat(newIngredient)
 
     //setState w/ new clickedIngred arra
-    this.setState({
-      addedIngredients: updatedClickeIngreadietns
-    })
-
-  clearBurger = (e) => {
-    this.setState({
-      addedIngredients = []
-    })
-  }
+    setAddedIngredients(updatedAddedIngredients)
   } 
 
-
-
-  render() {
-
-    return(
-
-      <div style={{display: "flex", alignItems:"flex-end"}}>
-        <IngredientList ingredients={ingredients} addToBurger={this.addToBurger} BurgerPane/>
-        <h2>Burger Pane addedIngredients={this.state.addedIngredients} clearBurger{this.clearBurger}</h2>
-      </div>
-
-    )
+  const clearBurger = (e) => {
+    setAddedIngredients([])
   }
+
+  return (
+    <div style={{display:"flex", alignItems:"flex-end"}}>
+      <IngredientList 
+        ingredients={ingredients} 
+        addToBurger={addToBurger}
+      />
+      <BurgerPane addedIngredients={addedIngredients} clearBurger={clearBurger} />
+    </div>
+  )
 }

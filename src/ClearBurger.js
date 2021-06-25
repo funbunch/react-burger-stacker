@@ -1,11 +1,7 @@
-import { Component } from "react"
+import React from 'react'
 
-export default class ClearBurger extends Component {
-
-  render() {
-
-    return( 
-      <button onClick={(e) => this.props.clearBurger(e)}>Clear Burger Stack</button>
-    )
-  }
+export default function ClearBurger(props) {
+  return( 
+    <button onClick={props.clearBurger}>Clear Burger Stack</button>
+  )
 }
